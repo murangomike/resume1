@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Njeru Murango - Data Scientist & BI Analyst Resume</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #4a8b5c; /* A vibrant green */
+            --secondary-color: #6ba26a; /* A lighter green */
+            --dark-bg: #2a2a2a;
+            --medium-bg: #333232;
+            --light-text: #ffffff;
+            --subtle-text: #cccccc;
+            --border-color: rgba(74, 139, 92, 0.3);
+            --shadow-color: rgba(74, 139, 92, 0.4);
+            --card-bg: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--medium-bg) 50%, var(--dark-bg) 100%);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section (Top of Resume) */
+        .header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(42,42,42,0.6));
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 25px rgba(74, 139, 92, 0.5);
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--light-text), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .title {
+            font-size: 1.4rem;
+            color: var(--subtle-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            color: var(--subtle-text);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 2rem; /* Row gap, column gap */
+        }
+
+        .contact-info a, .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--subtle-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+        }
+
+        .download-btn {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: var(--dark-bg); /* Ensure background for sections */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(45deg, var(--light-text), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Summary Section */
+        .summary-text {
+            font-size: 1.05rem;
+            color: var(--subtle-text);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 0;
+            position: relative;
+            width: 50%;
+            margin-bottom: 40px; /* Space between items */
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 30px;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 30px;
+            text-align: right;
+        }
+
+        .timeline-item-inner {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item-inner:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-color);
+        }
+
+        .timeline-item .icon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px var(--shadow-color);
+            border: 2px solid var(--light-text);
+            z-index: 2;
+            top: calc(50% - 15px); /* Adjusted for center */
+        }
+        .timeline-item:nth-child(odd) .icon { right: -15px; } /* Adjust icon for left items */
+        .timeline-item:nth-child(even) .icon { left: -15px; } /* Adjust icon for right items */
+
+
+        .timeline-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-item h4 {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .timeline-item p {
+            color: var(--subtle-text);
+            font-size: 0.9rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+            color: var(--subtle-text);
+        }
+
+        .timeline-item ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 139, 92, 0.1), transparent);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) rotateX(1deg);
+            box-shadow: 0 15px 30px var(--shadow-color);
+            border-color: var(--secondary-color);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--light-text);
+        }
+
+        .project-card p {
+            color: var(--subtle-text);
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .project-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        /* Progress Bars (adapted for resume context) */
+        .progress-container {
+            margin: 1rem 0 0.8rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+            color: var(--subtle-text);
+            font-size: 0.85rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            width: 0; /* Initial state for animation */
+            transition: width 1.5s ease-out; /* Smooth fill animation */
+            position: relative;
+        }
+         .project-card.visible .progress-fill {
+            width: var(--progress-width); /* Set by JS */
+        }
+
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Education & Certifications */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-color);
+            border-color: var(--secondary-color);
+        }
+
+        .education-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .education-card h4 {
+            color: var(--light-text);
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        .education-card p {
+            color: var(--subtle-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skills-category h3 {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .skills-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 1px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            text-align: left;
+            padding: 0 1.5rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .skill-item:hover {
+            transform: translateX(3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+            border-color: var(--secondary-color);
+        }
+        .skill-item strong {
+            color: var(--light-text);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .skill-item p {
+            color: var(--subtle-text);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Ripple Effect for Project Cards */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear forwards;
+            pointer-events: none;
+            z-index: 1; /* Ensure ripple is above card content */
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 900px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            .header .title {
+                font-size: 1.2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .experience-timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 1.5rem; /* Ensure right padding */
+                text-align: left;
+            }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item .icon {
+                left: 20px;
+                right: auto; /* Reset right for even items */
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .header {
+                padding: 2rem 0;
+                margin-bottom: 2rem;
+            }
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .header .title {
+                font-size: 1rem;
+            }
+            .contact-info {
+                font-size: 0.9rem;
+            }
+            .download-btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 2rem 0;
+                margin-bottom: 2rem;
+            }
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .summary-text {
+                font-size: 0.95rem;
+                padding: 0 1rem;
+            }
+            .projects-grid, .education-grid, .skills-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            .project-card, .education-card, .skill-item {
+                padding: 1.5rem;
+            }
+            .project-card h3, .education-card h3 {
+                font-size: 1.1rem;
+            }
+            .project-card p, .education-card p, .skill-item p {
+                font-size: 0.85rem;
+            }
+            .project-link {
+                font-size: 0.85rem;
+            }
+            .timeline-item ul li {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <img src="YOUR_PROFILE_PHOTO.jpg" alt="Mike Njeru Murango" class="profile-photo">
+            <h1>Mike Njeru Murango</h1>
+            <p class="title">IBM Certified Data Scientist | Business Intelligence Analyst</p>
+            <div class="contact-info">
+                <a href="mailto:Mikemurango00@gmail.com"><i class="fas fa-envelope"></i> Mikemurango00@gmail.com</a>
+                <span><i class="fas fa-phone"></i> +254791303899</span>
+                <span><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</span>
+                <a href="https://linkedin.com/in/murangomike" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/murangomike" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://murangomike.github.io/mikemurango.io" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+            </div>
+            <a href="MIKE NJERU MURANGO OPTIVEN RESUME.docx" download class="download-btn">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </header>
+
+        ---
+
+        <!-- Summary Section -->
+        <section class="section" id="summary">
+            <h2>Professional Summary 🌟</h2>
+            <p class="summary-text">
+                Strategic and detail-oriented **Analytics and Machine Learning Engineer** with a strong background in data modeling, machine learning model development, and algorithm implementation. Experienced in building and optimizing data pipelines, performing SQL-based transformations, and monitoring data quality. Skilled in leveraging machine learning techniques to solve complex problems and drive data-driven decision-making. Adept at collaborating with both analytics and technology teams to design scalable, efficient data infrastructure that enhances impact measurement. Passionate about using **advanced analytics and machine learning to drive social impact** and optimize processes for better outcomes.
+            </p>
+        </section>
+
+        ---
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <h2>Work Experience 💼</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-item-inner">
+                        <h3>Data Science Consultant</h3>
+                        <h4>Mar 2024 - Current</h4>
+                        <ul>
+                            <li>Conducted data collection via mobile data tools, web scraping (Python, BeautifulSoup, Requests), and API integrations for scalable data ingestion.</li>
+                            <li>Performed comprehensive data wrangling, cleaning, and preprocessing on complex datasets using Python (Pandas, NumPy), SQL, and BigQuery.</li>
+                            <li>Built and orchestrated robust ETL/ELT pipelines using **dbt**, **Apache Airflow**, and custom Python scripts, extracting data from CRM, ERP, and HR systems (Oracle, Microsoft RDS, REST APIs) into AWS S3, BigQuery, and data lakes.</li>
+                            <li>Utilized **Google BigQuery** for large-scale SQL analysis, optimizing performance with partitioning, clustering, and materialized views for BI tools.</li>
+                            <li>Developed and deployed **RESTful Flask APIs** for ML models and data services, hosted in production using Docker, Gunicorn, and NGINX on **AWS EC2** and **Heroku**.</li>
+                            <li>Version-controlled all projects using **Git** with structured branching strategies, ensuring collaboration, rollback safety, and reproducibility.</li>
+                            <li>Created and delivered insightful dashboards and reports using **Power BI**, **Looker Studio**, and **Tableau**, enabling data-driven insights for stakeholders.</li>
+                            <li>Worked with both SQL (PostgreSQL, BigQuery) and NoSQL (Cassandra, MongoDB) databases for analytics, real-time querying, and application backends.</li>
+                            <li>Developed a **market basket analysis model** using Apriori, optimizing in-store product placements and bundling strategies.</li>
+                            <li>Built and deployed **machine learning models for churn prediction** and retention forecasting.</li>
+                            <li>Conducted **A/B testing experiments** on pricing strategies, identifying optimal tiers that boosted revenue and customer satisfaction.</li>
+                            <li>Performed customer segmentation using **clustering techniques** (K-Means, DBSCAN), increasing personalization in marketing campaigns.</li>
+                            <li>Utilized **AWS tools** (Lambda, S3, RDS) and **Azure tools** (Azure SQL, Lake, Apache Airflow) for data processing and management.</li>
+                            <li>Built and trained a **Computer Vision model** using **Convolutional Neural Networks (CNNs)** with PyTorch for product identification.</li>
+                            <li>Applied **reinforcement learning techniques** (Multi-Armed Bandits: Epsilon-Greedy, Thompson Sampling) to dynamically optimize ad creatives and media spend.</li>
+                            <li>Collaborated cross-functionally to deliver production-grade data products and decision-support systems in cloud-native environments.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="timeline-item-inner">
+                        <h3>Data Analyst - Supp Merchant</h3>
+                        <h4>Mar 2023 - Apr 2024</h4>
+                        <ul>
+                            <li>Conducted data cleaning and pre-processing using Excel, Power BI, and Python, ensuring data quality for analysis.</li>
+                            <li>Designed survey instruments and conducted quantitative and qualitative research projects.</li>
+                            <li>Utilized Python to create ETL pipelines and build/maintain data dictionaries.</li>
+                            <li>Spearheaded Python automations for data wrangling by creating field level standards like date formats, currency handling, null values, and NLP cases.</li>
+                            <li>Performed advanced data mining, statistical analysis, and forecasting for various departments.</li>
+                            <li>Led technical documentation of data processes, business requirements, and testing requirements.</li>
+                            <li>Developed and tracked Key Performance Indicators (KPIs) to measure effectiveness of data initiatives.</li>
+                            <li>Maintained excellent communication with government counterparts and other stakeholders to ensure consistent updates and smooth coordination of data-driven initiatives.</li>
+                            <li>Established GDPR-compliant data access controls for the entire organization.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="icon"><i class="fas fa-globe"></i></div>
+                    <div class="timeline-item-inner">
+                        <h3>Data Analyst Volunteer - UN Development Programme</h3>
+                        <h4>Oct 2023 - Dec 2023</h4>
+                        <ul>
+                            <li>Analyzed data from multiple sources (Excel, cloud databases) to assess progress on AU2069 goals.</li>
+                            <li>Created comprehensive Power BI dashboards to visualize AU2069 themes and objectives, delivering clear, actionable insights to senior stakeholders.</li>
+                            <li>Ensured data integrity by implementing thorough validation checks and conducting quality assessments.</li>
+                            <li>Collaborated with cross-functional teams to implement data governance practices, enhancing the reliability of data used in decision-making.</li>
+                            <li>Recommended automation opportunities to streamline repetitive reporting tasks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="timeline-item-inner">
+                        <h3>Junior Data Analyst - Radiant Minds</h3>
+                        <h4>Feb 2019 - Mar 2023</h4>
+                        <ul>
+                            <li>Analyzed and interpreted complex datasets using Power BI, Excel, and Python to identify business trends and opportunities.</li>
+                            <li>Cleaned, transformed, and modeled data to ensure accuracy and reliability for decision-making.</li>
+                            <li>Developed interactive dashboards in Power BI and Excel, providing real-time insights for business stakeholders.</li>
+                            <li>Built predictive models to forecast trends and support strategic planning.</li>
+                            <li>Provided actionable insights through data storytelling, presentations, and strategic reports to drive business growth.</li>
+                            <li>Collaborated with internal and external stakeholders to align data analysis with business objectives.</li>
+                            <li>Automated reporting workflows using Power Query, DAX, and Python, reducing manual effort and improving efficiency.</li>
+                            <li>Optimized business processes by leveraging data-driven strategies and insights.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="icon"><i class="fas fa-city"></i></div>
+                    <div class="timeline-item-inner">
+                        <h3>Public Management Officer Intern - Nairobi City County</h3>
+                        <h4>Jan 2018 - April 2018</h4>
+                        <ul>
+                            <li>Conducted data analysis using Excel, generating actionable insights for public management projects.</li>
+                            <li>Presented findings to supervisors and directors (non-technical), simplifying complex data for decision-making.</li>
+                            <li>Led data collection efforts from various slums in Nairobi County using mobile data collection techniques.</li>
+                            <li>Collaborated with community outreach teams to ensure accurate and reliable data gathering.</li>
+                            <li>Assisted in creating reports that tracked program effectiveness and community impact.</li>
+                            <li>Coordinated with stakeholders to address data-related challenges.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <h2>Recent Projects 🚀</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="createClickEffect(event)" data-progress="95">
+                    <h3>🧪 Insurance Claim Clusters ETL with Jenkins</h3>
+                    <p>Implemented a **CI/CD pipeline using Jenkins** for ETL processes on insurance claim clusters, ensuring automated and reliable data delivery.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Automation Level</span><span>95% ⚙️</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress-width: 95%;"></div></div>
+                    </div>
+                    <a href="https://github.com/murangomike/Insurance-Claim-Clusters-ETL-JENKINS" class="project-link" target="_blank">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card" onclick="createClickEffect(event)" data-progress="90">
+                    <h3>🐳 Loan Default Risk Predictor - Dockerized & Kubernetes</h3>
+                    <p>Deployed a machine learning model for loan default prediction using **Docker and Kubernetes** for scalable and reproducible environments.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Deployment Readiness</span><span>90% 🚀</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress-width: 90%;"></div></div>
+                    </div>
+                    <a href="https://github.com/murangomike/Loan-Default-Risk-Predictor-Docterized-Kubernetes" class="project-link" target="_blank">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card" onclick="createClickEffect(event)" data-progress="94">
+                    <h3>📸 Product Image Classification using CNN</h3>
+                    <p>Developed a **Convolutional Neural Network (CNN) model** to classify product images, enabling automatic product identification from images. Implemented k-fold cross-validation and data augmentation for high accuracy.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Model Accuracy</span><span>94% 🎯</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress-width: 94%;"></div></div>
+                    </div>
+                    <a href="https://github.com/murangomike/Product-Image-Classification-using-CNN" class="project-link" target="_blank">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card" onclick="createClickEffect(event)" data-progress="92">
+                    <h3>🛒 Online Retail Store Consumer Purchase Behavior Analysis</h3>
+                    <p>Analyzed consumer purchase behavior using the **Apriori algorithm** to identify frequent itemsets and association rules, optimizing marketing strategies and inventory.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Insights Depth</span><span>92% 📈</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress-width: 92%;"></div></div>
+                    </div>
+                    <a href="https://github.com/murangomike/ONLINE-RETAIL-STORE-CONSUMER-PURCHASE-BEHAVIOUR-ANALYSIS" class="project-link" target="_blank">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="project-card" onclick="createClickEffect(event)" data-progress="90">
+                    <h3>⚠️ Kenyan Road Accidents Clusters</h3>
+                    <p>Geospatial analysis to identify clusters of road accidents in Kenya for targeted safety improvements and intervention strategies.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Clarity of Insights</span><span>90% 🌍</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress-width: 90%;"></div></div>
+                    </div>
+                    <a href="https://github.com/murangomike/Kenyan-Road-Accidents-Clusters" class="project-link" target="_blank">View Project <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <!-- Education & Certifications Section -->
+        <section class="section" id="education">
+            <h2>Education & Certifications 🎓</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <h4>MSc. in Financial Engineering</h4>
+                    <p>World Quant University | January 2025 - Ongoing</p>
+                    <br>
+                    <h4>Data Science</h4>
+                    <p>World Quant University | Mar 2023 - Aug 2024</p>
+                    <br>
+                    <h4>Bachelor of Science in Management and Development</h4>
+                    <p>Jomo Kenyatta University of Agriculture and Technology (JKUAT) | Sep 2015 - Nov 2019</p>
+                    <br>
+                    <h4>Certificate in Advanced Computer Application (CSK)</h4>
+                    <p>(Data Analysis, Accounting & Database Management)</p>
+                    <p>Annex Computer College | April 2015</p>
+                </div>
+
+                <div class="education-card">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <h4>Professional Certificate, Data Science</h4>
+                    <p>International Business Machines (IBM) | Sep 2023 - Jun 2024</p>
+                    <br>
+                    <h4>Business Analytics Specialization</h4>
+                    <p>(People analytics, Operations analytics, Customer Analytics, Accounting Analytics)</p>
+                    <p>The Wharton School of the University of Pennsylvania | Dec 2023 - Mar 2024</p>
+                    <br>
+                    <h4>Business and Marketing Strategies Specialization</h4>
+                    <p>University of London | Dec 2023 - Mar 2024</p>
+                    <br>
+                    <h4>Project Management</h4>
+                    <p>Microsoft Corp. | Oct 2024</p>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <!-- Technical & Soft Skills Section -->
+        <section class="section" id="skills">
+            <h2>Skills Arsenal 🛠️</h2>
+            <div class="skills-category">
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>Data Modeling & Transformations</strong>
+                        <p>dbt, SQL, Data Warehousing Principles, Incremental Processing, Schema Design</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data Quality & Governance</strong>
+                        <p>dbt Tests, Data Freshness Checks, Automated Quality Monitoring, Naming Conventions</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data Engineering & ETL</strong>
+                        <p>Building and Optimizing Data Pipelines, ETL/ELT, Apache Airflow, Python Scripting</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Version Control & Collaboration</strong>
+                        <p>Git, Structured Branching, Technical Documentation, Cross-functional Communication</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Tools & Technologies</strong>
+                        <p>Python (Pandas, NumPy, PyTorch), Google BigQuery, PostgreSQL, Cassandra, MongoDB, Power BI, Looker Studio, Tableau, SurveyCTO, ODK, Textit, Docker, Kubernetes, Jenkins, AWS (Lambda, S3, RDS), Azure (SQL, Lake)</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Machine Learning & AI</strong>
+                        <p>Supervised/Unsupervised Learning, Deep Learning (CNNs), Reinforcement Learning (Multi-Armed Bandits), NLP, Predictive Modeling, Clustering, Recommendation Systems</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3>Soft Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>Communication & Collaboration</strong>
+                        <p>Stakeholder Engagement, Clear and Concise Communication, Interpersonal Communication, Team Player, Cross-functional Collaboration</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Problem Solving & Analytical Thinking</strong>
+                        <p>Problem Solving, Analytical Skills, Pragmatic Thinking, Innovation, Risk Management</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Personal & Professional Development</strong>
+                        <p>Prioritization, Continuous Learning, Adaptability, Self-Management, Confidence</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Project Management & Reporting</strong>
+                        <p>Project Management, Report Writing, Business Requirements, Data Storytelling</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <!-- Footer / Contact Section -->
+        <footer class="section" id="contact">
+            <h2>Let's Connect & Build Together! 🤝</h2>
+            <p class="summary-text">
+                Ready to transform your data into a powerful asset? Whether you're looking for advanced analytics, robust machine learning solutions, or seamless data infrastructure, I'm eager to discuss how my expertise can drive your success.
+            </p>
+            <div class="contact-info" style="margin-top: 2.5rem;">
+                <a href="mailto:Mikemurango00@gmail.com"><i class="fas fa-envelope"></i> Mikemurango00@gmail.com</a>
+                <span><i class="fas fa-phone"></i> +254791303899</span>
+                <a href="https://linkedin.com/in/murangomike" target="_blank"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+            </div>
+            <p style="text-align: center; color: #888; font-size: 0.85rem; margin-top: 3rem;">&copy; 2024 Mike Njeru Murango. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for fade-in animation
+        const sections = document.querySelectorAll('.section');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    // Special handling for progress bars to animate on visibility
+                    if (entry.target.id === 'projects') {
+                        entry.target.querySelectorAll('.project-card').forEach(card => {
+                            const progressFill = card.querySelector('.progress-fill');
+                            if (progressFill) {
+                                // Trigger animation by setting width from data attribute
+                                progressFill.style.width = card.dataset.progress + '%';
+                            }
+                        });
+                    }
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        sections.forEach(section => {
+            appearOnScroll.observe(section);
+        });
+
+        // Dynamic click effect for project cards (Ripple)
+        function createClickEffect(event) {
+            const card = event.currentTarget;
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const ripple = document.createElement('span');
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.classList.add('ripple');
+            card.appendChild(ripple);
+
+            // Remove ripple after animation
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        }
+    </script>
+</body>
+</html>
